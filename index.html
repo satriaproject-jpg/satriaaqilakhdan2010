@@ -1,0 +1,169 @@
+!-- Created by satriyawww -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notebook</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    padding:2;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f6fa;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Notebook */
+.book {
+  width: 320px;
+  height: 460px;
+  position: relative;
+  perspective: 1500px;
+}
+
+/* Pages */
+.page {
+  width: 100%;
+  height: 100%;
+  background: #fffdf7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  transition: transform 0.8s ease;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  padding: 25px;
+  cursor: pointer;
+}
+
+/* Slight paper texture feel */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 28px,
+    rgba(0,0,0,0.03) 29px
+  );
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* Flipped state */
+.page.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* Content */
+h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Page numbers */
+.pageNum {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-size: 12px;
+  color: #999;
+}
+.page {
+  transition: transform 0.7s ease, box-shadow 0.7s ease;
+}
+
+.page.flipped {
+  transform: rotateY(-180deg);
+  box-shadow: -10px 10px 25px rgba(0,0,0,0.08);
+}
+.page::before {
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 30px,
+    rgba(0,0,0,0.018) 31px
+  );
+}
+.page {
+  border-left: 1px solid rgba(0,0,0,0.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="book" id="book">
+
+  <div class="page" onclick="flipPage(0)">
+    <h2>LASTT</h2>
+    <p>
+      INGATTTTT YAAAAAA KALOOOOOO KEMANAA MANAAA GAAAA BOLEHHHHH CANTIKKK CANTIKK NANTII BANYAK YANG NGELIRIKKKK
+    </p>
+    <div class="pageNum">1</div>
+  </div>
+
+  <div class="page" onclick="flipPage(1)">
+    <h2>LAGIIII</h2>
+    <p>
+      NANTIII KALOOOO KAMUUU DII AMBILL ORANGGG GIMANAAAAA,AKUU NYAAAA 
+    </p>
+    <div class="pageNum">2</div>
+  </div>
+
+  <div class="page" onclick="flipPage(2)">
+    <h2>TAP LAGIII</h2>
+    <p>
+      KAMU KENAPA CANTIK BANGETT SIII LUCUU,IMUTTT... KANNN AKUU NYAA JADIII SUKAA GITUU SAMAA KAMUUUUU
+    </p>
+    <div class="pageNum">3</div>
+  </div>
+
+  <div class="page" onclick="flipPage(3)">
+    <h2>HAII YAYA</h2>
+    <p>
+      AKUU MAUU NGOMONGG NIHHHH 
+      
+      
+      GESERRR LEMBAR NYA YA...
+    </p>
+    <div class="pageNum">4</div>
+  </div>
+
+</div>
+
+<script>
+let pages = document.querySelectorAll('.page');
+
+function flipPage(index) {
+  if (!pages[index].classList.contains('flipped')) {
+    pages[index].classList.add('flipped');
+  } else {
+    for (let i = index; i < pages.length; i++) {
+      pages[i].classList.remove('flipped');
+    }
+  }
+}
+</script>
+
+</body>
+</html>
